@@ -1,8 +1,24 @@
 <?php
 
-    if(isset($_POST["submitButton"]))
-    echo "Form submitted"
+    if(isset($_POST["submitButton"])) {
+
+    
+    
+    $firstName = sanitizeFormString($_POST["firstName"]);
+echo $firstName;
+}
+
+    function sanitizeFormString($inputText){
+        $inputText = strip_tags($inputText);
+        $inputText = str_replace(" ", "", $inputText);
+        $inputText = strtolower($inputText);
+        $inputText = ucfirst($inputText);
+        return $inputText;
+
+    }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -20,8 +36,10 @@
     <div class="column">
 
     <div class="header">
+    <img src="assets/images/logo.png" title="Logo" alts="Site Logo">
         <h3> Sign Up </h3>
         <span> to continue to Reddflix </span>
+        
 
         <form method="POST">
 
@@ -47,7 +65,7 @@
 
         </form>
 
-
+            <a href="login.php" class="signInMessage">Already have an account? Sign in here!</a>
 
 
 
